@@ -6,8 +6,6 @@
 */.idea
 *.iml
 
-.DS_Store
-
 # Gradle gitignore
 .gradle
 build/

@@ -12,11 +12,9 @@ host_file_name = "localhost"
 java_heap_size = "1g"
 
 # Program parameters
-params = {
-  "numWorkerThreads": 16
-  , "staleness": 0
-  , "numIterations": 10
-}
+num_worker_threads = 16
+staleness = 0
+num_iterations = 10
 
 jar_file = join(app_dir, "build", "libs", "hello_ssp-all.jar")
 host_file = join(proj_dir, "machinefile", host_file_name)
@@ -42,7 +40,9 @@ for client_id, ip in enumerate(host_ips):
   cmd += " org.petuum.app.hello_ssp.HelloSSP"
   cmd += " -clientId " + str(client_id)
   cmd += " -hostFile " + host_file
-  cmd += "".join([" -%s %s" % (k,v) for k,v in params.items()])
+  cmd += " -numWorkerThreads " + str(num_worker_threads)
+  cmd += " -staleness " + str(staleness)
+  cmd += " -numIterations " + str(num_iterations)
   cmd += " &"
 
   print cmd

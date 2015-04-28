@@ -223,8 +223,7 @@ public class MatrixFactWorker implements Runnable {
             for (int k = 0; k < K - 1; ++k) {
                 out.print(doubleFormat.format(rowCache.getUnlocked(k)) + ",");
             }
-            // no comma
-            out.println(doubleFormat.format(rowCache.getUnlocked(K-1)));
+            out.println(rowCache.getUnlocked(K-1));   // no comma
         }
         out.close();
 
@@ -241,8 +240,7 @@ public class MatrixFactWorker implements Runnable {
             for (int k = 0; k < K - 1; ++k) {
                 out.print(doubleFormat.format(rowCache.getUnlocked(k)) + ",");
             }
-            // no comma
-            out.println(doubleFormat.format(rowCache.getUnlocked(K-1)));
+            out.println(rowCache.getUnlocked(K-1));   // no comma
         }
         out.close();
         logger.info("Finish outputing to " + outputPrefix + " in "
