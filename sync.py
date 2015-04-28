@@ -12,11 +12,11 @@ hostfile = sys.argv[1]
 sync_path = "~/petuum-java-cmu-605"
 
 with open(hostfile, "r") as f:
-  ips = f.read().splitlines()
+  ips = f.readlines()
 
 for ip in ips:
-  cmd = "rsync -avhce \"ssh -o StrictHostKeyChecking=no\" " \
-      + sync_path + " " + ip.split()[1].strip() + ":~/"
+  cmd = "rsync -avhce \"ssh -i 15619primer.pem -o StrictHostKeyChecking=no\" " \
+      + sync_path + " " + ip.strip() + ":~/"
   print cmd
   time.sleep(2)
   os.system(cmd)
